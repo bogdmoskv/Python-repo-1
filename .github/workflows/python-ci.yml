@@ -1,0 +1,25 @@
+# Назва Github Actions Workflow
+name: Run Python Tests
+
+# Коли запускати?
+on: [push, pull_request]
+
+# Визначаэмо завдання для CI/CD
+jobs:
+  test:
+    runs-on: ubuntu-latest # Запуск на Ubuntu
+
+    steps:
+      - name: Checkout repository # Завантаження репозиторію
+        uses: actions/checkout@v3
+
+      - name: Set up Python # Встановлення Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies # Встановлення pytest
+        run: php install pytest
+
+      - name: Run tests # Запуск тестів
+        run: pytest
